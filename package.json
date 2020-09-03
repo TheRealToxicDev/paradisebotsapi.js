@@ -1,5 +1,5 @@
 {
-  "name": "@paradisebots/paradisebotsapi.js",
+  "name": "@ParadiseBotList/paradisebotsapi.js",
   "version": "1.1.0",
   "description": "The main wrapper for paradise bot list to post server count and shard count",
   "main": "index.js",
