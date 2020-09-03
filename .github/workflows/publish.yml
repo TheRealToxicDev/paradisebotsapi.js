@@ -29,5 +29,6 @@ jobs:
      scope: "@paradisebots"
        - run: npm install
        - run: git push --tags && git push
+       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
