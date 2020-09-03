@@ -1,9 +1,11 @@
 {
   "name": "@ParadiseBotList/paradisebotsapi.js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "The main wrapper for paradise bot list to post server count and shard count",
   "main": "index.js",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "node-fetch": "^2.6.0"
   },
@@ -11,8 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-"repository" : {
-    "type" : "git",
+  "repository": {
+    "type": "git",
     "url": "ssh://git@github.com:ParadiseBotList/paradisebotsapi.js.git"
   },
   "author": "ParadiseBotList",
