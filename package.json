@@ -13,9 +13,10 @@
   },
 "repository" : {
     "type" : "git",
-    "url": "ssh://git@github.com/ParadiseBotList/paradisebotsapi.js.git",
+    "url": "ssh://git@github.com:ParadiseBotList/paradisebotsapi.js.git",
     "directory": "package.json"
   },
-  "author": "Dexter",
+  "author": "ParadiseBotList",
+  "creator": "Dexter",
   "license": "MIT"
 }
