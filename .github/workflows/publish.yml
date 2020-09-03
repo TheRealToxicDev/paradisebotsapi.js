@@ -25,8 +25,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/paradisebots
-         
+          registry-url: https://npm.pkg.github.com
+      - run: git init
+      - run: git remote add origin git://https://github.com/ParadiseBotList/paradisebotsapi.js
       - run: npm install
       - run: npm publish
         env:
