@@ -26,9 +26,10 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: "@ParadiseBotList"
+         
       - run: npm install
+      - run: git remote add origin git@github.com:ParadiseBotList/paradisebotsapi.js.git
       - run: git push --tags && git push
-      - run: npm publish --access public
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
