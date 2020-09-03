@@ -11,6 +11,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+"repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/ParadiseBotList/paradisebotsapi.js.git",
+    "directory": "package.json"
+  },
   "author": "Dexter",
   "license": "MIT"
 }
