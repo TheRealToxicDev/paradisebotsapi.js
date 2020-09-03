@@ -4,7 +4,7 @@
   "description": "The main wrapper for paradise bot list to post server count and shard count",
   "main": "index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/paradisebots"
+    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "node-fetch": "^2.6.0"
