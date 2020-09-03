@@ -1,11 +1,11 @@
-# tropical bot list api wrapper for node.js
+# Paradise Bot List API Wrapper for Node.JS
 
 [Bot List Link](https://paradisebots.net/)
 
 
 *Installation*
 
-`npm install paradisebotlist.js --save`
+`npm install paradisebotsapi.js --save`
 
 <hr>
 
@@ -17,21 +17,21 @@
 
 **Response**
 
-[ Error ] 429 : `[TBL] (429): Your are being ratelimited, 1 request per 5 mins.`
+[ Error ] 429 : `[PBL] (429): Your are being ratelimited, 1 request per 5 mins.`
 
-[ Error ] 404 : `[TBL] (404): Can't find server_count.`
+[ Error ] 404 : `[PBL] (404): Can't find server_count.`
 
-[ Error ] 404 : `[TBL] (404): Authorization header not found.`
+[ Error ] 404 : `[PBL] (404): Authorization header not found.`
 
-[ Error ] 400 : `[TBL] (400): server_count not integer.`
+[ Error ] 400 : `[PBL] (400): server_count not integer.`
 
-[ Error ] 404 : `[TBL] (404): Bot not found!`
+[ Error ] 404 : `[PBL] (404): Bot not found!`
 
-[ Error ] 400 : `[TBL] (400): Incorrect authorization token.`
+[ Error ] 400 : `[PBL] (400): Incorrect authorization token.`
 
-[ Error ] 404 : `[TBL] (404): Go generate auth token for your bot!`
+[ Error ] 404 : `[PBL] (404): Go generate auth token for your bot!`
 
-[ Error ] 400 : `[TBL] (400): shard_count not integer.`
+[ Error ] 400 : `[PBL] (400): shard_count not integer.`
 
 
 [ Success ] 200 : **[200]: Your Stats Has Been Posted.**
