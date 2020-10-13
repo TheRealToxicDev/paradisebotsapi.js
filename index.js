@@ -1,9 +1,7 @@
 const fetch = require("node-fetch");
 
-class get {
+class PBL {
     constructor(id, auth){
-        if(!auth)throw new Error("Missing authorization token.")
-        if(!id)throw new Error("Missing bot id.")
         this.id = id
         this.auth = auth
     }
@@ -30,6 +28,4 @@ class get {
     }
 }
 
-module.exports = {
-    get
-}
+module.exports = PBL;

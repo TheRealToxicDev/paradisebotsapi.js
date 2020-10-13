@@ -21,7 +21,7 @@ An official NPM Module for interacting with the  Paradise API
 
 or
 
-`npm i paradiseapi.js@latest`
+`npm i paradiseapi.js@1.0.6`
 
 or
 
@@ -30,7 +30,7 @@ or
 ## Hard Coded Install
 Append the Line below to your package.json
 ```
-    "paradiseapi.js": "^1.0.3",
+    "paradiseapi.js": "^1.0.6",
 ```
 
 • Save and profit
@@ -68,7 +68,7 @@ You can POST Server and Shard Count stats once every 5 minutes
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const prefix = "!";
-const PBL = require("paradisebotsapi.js")
+const PBL = require("paradiseapi.js")
 const pbl = new PBL.get(client.user.id,"bot-auth-token")
 
 client.on("ready", () => {
@@ -150,8 +150,8 @@ module.exports = class ReadyListener extends Listener {
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const prefix = "!";
-const PBL = require("paradisebotsapi.js")
-const stats = new PBL.get()
+const PBL = require("paradiseapi.js")
+const stats = new PBL();
  
 client.on("ready", () => { // ready listenerconsole.log(`Logged in as ${client.user.tag}`)}) 
 client.on("message", message => { // message listener
@@ -164,7 +164,7 @@ client.on("message", message => { // message listener
      if(message.content == (prefix + "stats")){
         stats.get(client.user.id, function(data){ // ID should be string
         let embed = new MessageEmbed()
-        .setTitle(data.bot_name)
+        .setTitle(data.username)
         .setDescription(`
         Votes: ${data.votes},
         Support: ${data.server},
