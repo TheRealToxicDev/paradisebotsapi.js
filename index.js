@@ -1,14 +1,18 @@
 const fetch = require("node-fetch");
 
+/**
+* PARADISE BOT LIST API
+*
+* CHANGING ANYTHING HERE WILL NOT AFFECT HOW THE API WORKS
+* ALL ACTIONS AND LOGS ARE EXECUTED FROM THE WEBSITE API
+* THIS IS JUST A MODULE TO INTERACT WITH IT
+*/
 class PBL {
     constructor(id, auth){
         this.id = id
         this.auth = auth
     }
     async post(server_count, shard_count){
-        //At our api all actions logs is excuted from the bot list!
-        //You can't change any logs
-        //OH YEAH WHAT YOU ARE DOING HERE BITCH GET OUT NOW!
         let body = shard_count ? { 'server_count': server_count, 'shard_count': shard_count } : { 'server_count': server_count, 'shard_count': 0 }
         await fetch(`https://paradisebots.net/api/v1/bot/${this.id}`, {
             method: 'POST',
