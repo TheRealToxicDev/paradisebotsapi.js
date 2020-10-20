@@ -1,6 +1,5 @@
 # Paradise Bot List API Wrapper
-
-An official NPM Module for interacting with the  Paradise API
+The official NPM Module for interacting with the Paradise API
 
 ---
 
@@ -8,7 +7,7 @@ An official NPM Module for interacting with the  Paradise API
 
 * [Discord](https://paradisebots.net/join)
 
-* [Docs](https://docs.paradisebots.net/internal)
+* [GitHub](https://github.com/ParadiseBotList/paradisebotsapi.js)
 
 * [Website](https://paradisebots.net)
 
@@ -21,16 +20,18 @@ An official NPM Module for interacting with the  Paradise API
 
 or
 
-`npm i paradiseapi.js@1.0.6`
+`npm i paradiseapi.js@1.0.8`
 
 or
 
 `npm i paradiseapi.js --save`
 
+---
+
 ## Hard Coded Install
 Append the Line below to your package.json
 ```
-    "paradiseapi.js": "^1.0.6",
+    "paradiseapi.js": "^1.0.8",
 ```
 
 • Save and profit
@@ -39,6 +40,8 @@ Append the Line below to your package.json
 
 ## Ratelimits
 You can POST Server and Shard Count stats once every 5 minutes
+
+---
 
 ## Response
 
@@ -63,13 +66,31 @@ You can POST Server and Shard Count stats once every 5 minutes
 
 ---
 
-## Example (Discord.js v12)
+
+## Posting Stats
+
+### Constructor
+
+```
+PBL(client, token)
+```
+
+###### Arguments
+Parameter | Type | Optional | Description
+|--------------|----------|--------------|--------------|
+token | String | No | The API Auth Token found on your bots page.
+client | Snowflake | No | The Client ID for the bot you want to post stats to.
+
+--- 
+
+### Discord.js v12 Example
+
 ```js
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const prefix = "!";
 const PBL = require("paradiseapi.js")
-const pbl = new PBL.get(client.user.id,"bot-auth-token")
+const pbl = new PBL(client.user.id,"bot-auth-token")
 
 client.on("ready", () => {
 console.log(`Logged in as ${client.user.tag}.`)
@@ -92,9 +113,8 @@ client.login("token")
 
 ```
 
----
+### Discord.js v12 Example (Wtih event handler
 
-## Example (Discord.js v12 With Event Handler)
 ```js
 module.exports = class extends EventClass {
     constructor() {
@@ -106,7 +126,7 @@ module.exports = class extends EventClass {
 
     exec() {
   const PBL = require("paradiseapi.js")
-  const pbl = new PBL.get("BOT_ID_HERE","AUTH_TOKEN_HERE")
+  const pbl = new PBL("BOT_ID_HERE","AUTH_TOKEN_HERE")
   
 /* Here is where we Post the stats to the Site (Only use one of these) */
    pbl.post(client.guilds.cache.size) /* Will `POST` server count*/
@@ -116,7 +136,8 @@ module.exports = class extends EventClass {
 }
 ```
 
-## Example ([Discord Akairo](https://www.npmjs.com/package/discord-akairo))
+### ([Discord Akairo](https://www.npmjs.com/package/discord-akairo)) Example
+
 ```js
 const Discord = require('discord.js');
 const { Listener } = require('discord-akairo');
@@ -135,7 +156,7 @@ module.exports = class ReadyListener extends Listener {
 
     exec() {
   const PBL = require("paradiseapi.js")
-  const pbl = new PBL.get("BOT_ID_HERE","AUTH_TOKEN_HERE")
+  const pbl = new PBL("BOT_ID_HERE","AUTH_TOKEN_HERE")
   
 /* Here is where we Post the stats to the Site (Only use one of these) */
    pbl.post(client.guilds.cache.size) /* Will `POST` server count*/
@@ -145,13 +166,48 @@ module.exports = class ReadyListener extends Listener {
 }
 ```
 
-## Fetching Stats (Example)
+---
+
+## Getting Stats
+
+### Constructor
+
+```
+PBL()
+```
+
+###### Arguments
+Parameter | Type | Optional | Description
+|--------------|----------|--------------|--------------|
+username | String | Yes | The bots username.
+botid | Snowflake | Yes | The bots ID.
+owner | Snowflake | Yes | The bot owners ID.
+additionalOwners | String | Yes | The IDs of all additional owners (if any).
+Prefix | String | Yes | The bots listed prefix(s).
+shortDescription | String | Yes | The bots short description (Shown on cards).
+longDescription | String | Yes | The bots long description (Can be markdown).
+votes | Number | Yes | The bots total number of upvotes.
+usersVoted | String | Yes |IDs of the last 10 users who voted (May return less).
+usersVotedTotal | Number | Yes | Total number of Individual Users who have voted (Each user = 1).
+server | String | Yes | Link to the bots support server.
+website | String | Yes | Link to the bots website.
+github | String | Yes | Link to the bots github.
+donate | String | Yes | Link to donate to the bot.
+tags | String | Yes | List of the bots tags.
+library | String | Yes | The library the bot was made with.
+servers | Number | Yes | Number of total servers the bot is in.
+shards | Number | Yes | Number of total shards the bot has.
+
+
+--- 
+
+### Example
 ```js
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const prefix = "!";
-const PBL = require("paradiseapi.js")
-const stats = new PBL();
+const PBL = require("paradisebotsapi.js")
+const stats = new PBL()
  
 client.on("ready", () => { // ready listenerconsole.log(`Logged in as ${client.user.tag}`)}) 
 client.on("message", message => { // message listener
@@ -162,28 +218,19 @@ client.on("message", message => { // message listener
         message.reply(`Pong ${client.ws.ping}ms`)
     }
      if(message.content == (prefix + "stats")){
-        stats.get(client.user.id, function(data){ // ID should be string
+        stats.get(client.user.id, function(data){
         let embed = new MessageEmbed()
         .setTitle(data.username)
-        .setDescription(`
-        Votes: ${data.votes},
-        Support: ${data.server},
-        Website: ${data.website},
-        Donate: ${data.donate},
-        Tags: ${data.tags}
-        Prefix: ${data.prefix},
-        Library: ${data.library},
-        Description: ${data.shortDescription},
-        Servers: ${data.servers},
-        Shards: ${data.shards},
-        Staff: ${data.additionalOwners},
-        `)
-        .setFooter(`Bot created by ${data.owner}`)
-        })
+        .setDescription(`Vote here: https://paradisebots.net/api/v1/bots/${client.user.id}`)
+        .addField("Total Votes", data.votes);
+
         message.channel.send(embed)
+        })
     }
 })
  
  
 client.login("token")
 ```
+
+--- 
