@@ -20,7 +20,7 @@ The official NPM Module for interacting with the Paradise API
 
 or
 
-`npm i paradiseapi.js@1.0.8`
+`npm i paradiseapi.js@1.10.0`
 
 or
 
@@ -31,7 +31,7 @@ or
 ## Hard Coded Install
 Append the Line below to your package.json
 ```
-    "paradiseapi.js": "^1.0.8",
+    "paradiseapi.js": "^1.10.0",
 ```
 
 • Save and profit
@@ -224,6 +224,42 @@ client.on("message", message => { // message listener
         .setDescription(`Vote here: https://paradisebots.net/api/v1/bots/${client.user.id}`)
         .addField("Total Votes", data.votes);
 
+        message.channel.send(embed)
+        })
+    }
+})
+ 
+ 
+client.login("token")
+```
+
+### Example (GET User)
+```js
+const Discord = require("discord.js")
+const client = new Discord.Client()
+const prefix = "!";
+const PBL = require("paradisebotsapi.js")
+const user_stats = new PBL()
+ 
+client.on("ready", () => { // ready listenerconsole.log(`Logged in as ${client.user.tag}`)}) 
+client.on("message", message => { // message listener
+    if(message.author.bot) return;
+    if(message.channel.type !== "text") return;
+    if(!message.content.toLowerCase().startsWith(prefix)) return;
+    if(message.content == (prefix + "ping")){
+        message.reply(`Pong ${client.ws.ping}ms`)
+    }
+     if(message.content == (prefix + "stats")){
+        user_stats.getUser("SOME_USER_ID", function(data){ // USER ID Should be String
+        let embed = new MessageEmbed()
+        .setTitle(data.userName)
+        .setDescription('The info here is fetched from the Paradise Bots API')
+        .addField("User ID", data.userID, true)
+        .addField("Bio", data.bio, true)
+        .addField("Certified User?", data.certifiedUser, true)
+        .addField("Vote Banned?", data.voteBanned, true)
+        .setFooter(`Requested By: ${message.author.username}`)
+ 
         message.channel.send(embed)
         })
     }

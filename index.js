@@ -32,6 +32,16 @@ class PBL {
             response(await res.json())
         })
     }
+
+    async getUser(userID, response) {
+        if(!userID) throw new Error('Missing User ID, Should be a string')
+        fetch(`https://paradisebots.net/api/v1/users/${userID}`, {
+            method: 'GET',
+            headers: {"Content-Type": "application/json"},
+        }).then(async res => {
+            response(await res.json())
+        })
+    }
 }
 
 module.exports = PBL;

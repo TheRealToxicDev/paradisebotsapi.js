@@ -1,6 +1,6 @@
 {
   "name": "paradiseapi.js",
-  "version": "1.0.6",
+  "version": "1.10.0",
   "description": "The main wrapper for Paradise Bot List to post server count and shard count",
   "main": "index.js",
   "dependencies": {
